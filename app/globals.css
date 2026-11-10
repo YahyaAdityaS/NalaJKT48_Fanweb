@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --color-ink: #081a33;
+  --color-navy: #0d2748;
+  --color-cobalt: #1f5fdb;
+  --color-mist: #f5f8fd;
+  --color-ice: #eaf2fd;
+  --color-line: #dfe8f4;
+  --color-slate-body: #506176;
+  --color-success: #0f8a5f;
+  --color-warning: #b45309;
+  --radius-card: 1.25rem;
+  --shadow-soft: 0 1px 2px rgba(8, 26, 51, 0.04), 0 18px 50px -30px rgba(8, 26, 51, 0.32);
+  --shadow-lift: 0 2px 4px rgba(8, 26, 51, 0.04), 0 26px 60px -28px rgba(8, 26, 51, 0.36);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-cobalt text-white;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 3px;
+  }
+
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+}
+
+@layer utilities {
+  /*
+   * Outline display type. `-webkit-text-fill-color` keeps `currentColor`
+   * available for the stroke, so the class inherits any text color.
+   */
+  .text-outline {
+    -webkit-text-stroke: 2px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-outline-thin {
+    -webkit-text-stroke: 1.5px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out both;
+  }
+
+  .animate-sheet-in {
+    animation: sheet-in 0.34s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-rise-in {
+    animation: rise-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .glass {
+    background: rgb(255 255 255 / 0.74);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  .glass-dark {
+    background: rgb(8 26 51 / 0.62);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-dark {
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
