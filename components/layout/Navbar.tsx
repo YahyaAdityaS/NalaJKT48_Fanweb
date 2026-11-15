@@ -118,11 +118,17 @@ export function Navbar() {
             aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
             className="grid size-10 place-items-center rounded-full border border-line bg-white/80 text-ink transition-colors hover:bg-mist lg:hidden"
           >
-            {menuOpen ? (
-              <X className="size-5" aria-hidden="true" />
-            ) : (
-              <Menu className="size-5" aria-hidden="true" />
-            )}
+            <span
+              key={menuOpen ? "close" : "open"}
+              className="grid animate-count-in place-items-center"
+              aria-hidden="true"
+            >
+              {menuOpen ? (
+                <X className="size-5" />
+              ) : (
+                <Menu className="size-5" />
+              )}
+            </span>
           </button>
         </div>
       </div>
@@ -130,7 +136,7 @@ export function Navbar() {
       {menuOpen ? (
         <div
           id="mobile-menu"
-          className="animate-fade-in border-t border-line bg-white/95 backdrop-blur-xl lg:hidden"
+          className="animate-menu-in border-t border-line bg-white/95 backdrop-blur-xl lg:hidden"
         >
           <nav
             aria-label="Navigasi mobile"

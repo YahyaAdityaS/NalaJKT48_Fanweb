@@ -44,7 +44,7 @@ export function About() {
           </Reveal>
 
           {/* Bio and facts */}
-          <div className="lg:col-span-7">
+          <Reveal className="lg:col-span-7" delay={0.06}>
             <SectionHeading
               eyebrow="Tentang Nala"
               title="Energi kecil yang selalu bikin panggung hidup."
@@ -85,7 +85,7 @@ export function About() {
               Profil ini disusun dari informasi publik sebagai bentuk dukungan
               fan-made. Untuk data resmi, selalu cek kanal JKT48.
             </p>
-          </div>
+          </Reveal>
         </div>
 
         {/* Journey timeline */}

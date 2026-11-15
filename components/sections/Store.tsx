@@ -42,14 +42,17 @@ export function Store() {
         <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product, index) => (
             <Reveal key={product.id} delay={index * 0.06} className="h-full">
-              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-cobalt/20 hover:shadow-lift">
                 <div className="relative aspect-square overflow-hidden bg-[#edf4fc]">
                   {product.tag ? (
                     <span className="absolute left-3 top-3 z-10 rounded-full bg-white/90 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm backdrop-blur">
                       {product.tag}
                     </span>
                   ) : null}
-                  <ProductVisual product={product} />
+                  <ProductVisual
+                    product={product}
+                    className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
                 </div>
 
                 <div className="flex flex-1 flex-col p-5">

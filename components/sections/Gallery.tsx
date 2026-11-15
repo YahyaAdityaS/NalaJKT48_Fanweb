@@ -139,15 +139,19 @@ export function Gallery() {
 
         <ul
           key={filter}
-          className="mt-8 grid animate-rise-in grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
+          className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
         >
           {items.map((item, index) => (
-            <li key={item.id}>
+            <li
+              key={item.id}
+              className="animate-rise-in"
+              style={{ animationDelay: `${Math.min(index * 40, 240)}ms` }}
+            >
               <button
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 aria-label={`Perbesar foto ${item.title}`}
-                className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-mist text-left ring-1 ring-ink/5"
+                className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-mist text-left ring-1 ring-ink/5 transition-shadow duration-300 hover:ring-cobalt/25"
               >
                 <Image
                   src={item.image}
@@ -162,11 +166,11 @@ export function Gallery() {
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute right-3 top-3 grid size-8 place-items-center rounded-full bg-white/20 text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute right-3 top-3 grid size-8 scale-90 place-items-center rounded-full bg-white/20 text-white opacity-0 backdrop-blur-sm transition duration-300 group-hover:scale-100 group-hover:opacity-100"
                 >
                   <ZoomIn className="size-4" />
                 </span>
-                <span className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
+                <span className="absolute inset-x-0 bottom-0 p-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 sm:p-4">
                   <span className="block text-[9px] font-semibold uppercase tracking-[0.16em] text-white/65">
                     {categoryLabels[item.category]} · {item.meta}
                   </span>
@@ -190,7 +194,7 @@ export function Gallery() {
           role="dialog"
           aria-modal="true"
           aria-label={`Galeri: ${activeItem.title}`}
-          className="fixed inset-0 z-[95] flex flex-col bg-ink/95 p-4 backdrop-blur-sm sm:p-8"
+          className="fixed inset-0 z-[95] flex animate-fade-in flex-col bg-ink/95 p-4 backdrop-blur-sm sm:p-8"
         >
           <div className="flex items-center justify-between gap-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55">
@@ -219,7 +223,10 @@ export function Gallery() {
               <ChevronLeft className="size-5" aria-hidden="true" />
             </button>
 
-            <div className="relative h-full w-full max-w-4xl">
+            <div
+              key={activeItem.id}
+              className="relative h-full w-full max-w-4xl animate-lightbox-in"
+            >
               <Image
                 src={activeItem.image}
                 alt={activeItem.alt}

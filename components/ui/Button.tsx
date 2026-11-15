@@ -8,7 +8,7 @@ type ButtonVariant = "primary" | "dark" | "outline" | "light" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold leading-none transition-all duration-200 disabled:pointer-events-none disabled:opacity-45";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold leading-none transition-all duration-200 active:scale-[0.985] disabled:pointer-events-none disabled:opacity-45";
 
 const variants: Record<ButtonVariant, string> = {
   primary:

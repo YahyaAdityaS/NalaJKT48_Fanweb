@@ -19,7 +19,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
-  title: "NALANIA — Shabilqis Naila Bustomi, JKT48",
+  title: "NALANIA Official | Roar!",
   description,
   keywords: [
     "Nala JKT48",

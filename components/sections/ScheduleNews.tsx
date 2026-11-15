@@ -182,7 +182,7 @@ export function ScheduleNews() {
               {news.map((item) => (
                 <article
                   key={item.id}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-shadow duration-300 hover:shadow-soft"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-cobalt/20 hover:shadow-soft"
                 >
                   <button
                     type="button"
@@ -218,7 +218,10 @@ export function ScheduleNews() {
                       className="mt-4 inline-flex items-center gap-1.5 self-start text-[13px] font-semibold text-cobalt transition-colors hover:text-ink"
                     >
                       Baca selengkapnya
-                      <ArrowRight className="size-3.5" aria-hidden="true" />
+                      <ArrowRight
+                        className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
                     </button>
                   </div>
                 </article>
@@ -314,7 +317,7 @@ function ShowCard({ show }: { show: Show }) {
   const isSoldOut = show.status === "soldout";
 
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-line bg-white p-5 transition-shadow duration-300 hover:shadow-soft">
+    <article className="group flex h-full flex-col rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-cobalt/20 hover:shadow-soft">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-baseline gap-2">
           <span className="text-3xl font-extrabold leading-none tracking-[-0.03em] text-ink">
@@ -359,7 +362,10 @@ function ShowCard({ show }: { show: Show }) {
             className="w-full"
           >
             Book ticket
-            <ArrowUpRight className="size-3.5" aria-hidden="true" />
+            <ArrowUpRight
+              className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </ButtonLink>
         )}
       </div>

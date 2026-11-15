@@ -82,8 +82,11 @@ export function Community() {
 
             <div className="rounded-2xl bg-white p-6 shadow-lift sm:p-7">
               {submitted ? (
-                <div className="flex min-h-[16rem] flex-col items-center justify-center text-center">
-                  <span className="grid size-14 place-items-center rounded-full bg-[#e9f8f1] text-success">
+                <div className="flex min-h-[16rem] animate-rise-in flex-col items-center justify-center text-center">
+                  <span
+                    className="grid size-14 animate-pop-in place-items-center rounded-full bg-[#e9f8f1] text-success"
+                    style={{ animationDelay: "80ms" }}
+                  >
                     <CheckCircle2 className="size-7" aria-hidden="true" />
                   </span>
                   <h3 className="mt-4 text-xl font-extrabold tracking-[-0.02em] text-ink">
@@ -106,7 +109,7 @@ export function Community() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate>
+                <form onSubmit={handleSubmit} noValidate className="animate-rise-in">
                   <p className="flex items-center gap-2 text-[13px] font-bold text-ink">
                     <Mail className="size-4 text-cobalt" aria-hidden="true" />
                     Join the mailing list
@@ -145,7 +148,7 @@ export function Community() {
                       <p
                         id="community-email-error"
                         role="alert"
-                        className="mt-2 text-xs text-red-600"
+                        className="mt-2 animate-rise-in text-xs text-red-600"
                       >
                         {error}
                       </p>

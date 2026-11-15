@@ -17,6 +17,15 @@ export function Hero() {
       id="home"
       className="relative flex min-h-[100svh] flex-col overflow-hidden bg-mist pt-24 lg:pt-24"
     >
+      {/*
+       * A single stage-light bloom behind the opening act. Static gradient,
+       * animated opacity only, so it never repaints on scroll.
+       */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[68%] animate-spotlight-in bg-[radial-gradient(ellipse_58%_62%_at_50%_0%,rgba(31,95,219,0.15),transparent_72%)]"
+      />
+
       {/* The oversized wordmark stays in the background, never behind body copy. */}
       <span
         aria-hidden="true"
@@ -29,7 +38,10 @@ export function Hero() {
         <div className="grid flex-1 items-center gap-10 py-8 sm:gap-12 lg:grid-cols-12 lg:gap-6 lg:py-6">
           {/* Copy */}
           <div className="lg:col-span-6">
-            <p className="inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-cobalt sm:text-[11px]">
+            <p
+              className="inline-flex animate-hero-up items-center gap-2 rounded-full border border-line bg-white/80 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-cobalt sm:text-[11px]"
+              style={{ animationDelay: "60ms" }}
+            >
               <span className="size-1.5 rounded-full bg-cobalt" aria-hidden="true" />
               JKT48 · Gen 12 · Team Dream
             </p>
@@ -37,22 +49,43 @@ export function Hero() {
             <h1 className="mt-5 text-[clamp(3.5rem,9vw,7rem)] font-extrabold leading-[0.82] tracking-[-0.05em]">
               <span className="sr-only">NALANIA</span>
               <span aria-hidden="true" className="block">
-                <span className="block text-ink">NALA</span>
-                <span className="block">
-                  <span className="text-outline text-cobalt">NIA</span>
-                  <span className="text-cobalt">.</span>
+                <span className="line-mask">
+                  <span
+                    className="block animate-hero-line text-ink"
+                    style={{ animationDelay: "120ms" }}
+                  >
+                    NALA
+                  </span>
+                </span>
+                <span className="line-mask">
+                  <span
+                    className="block animate-hero-line"
+                    style={{ animationDelay: "210ms" }}
+                  >
+                    <span className="text-outline text-cobalt">NIA</span>
+                    <span className="text-cobalt">.</span>
+                  </span>
                 </span>
               </span>
             </h1>
 
-            <p className="mt-6 text-lg font-semibold tracking-[-0.01em] text-ink sm:text-xl">
+            <p
+              className="mt-6 animate-hero-up text-lg font-semibold tracking-[-0.01em] text-ink sm:text-xl"
+              style={{ animationDelay: "320ms" }}
+            >
               Well-being that fits your life ~
             </p>
-            <p className="mt-2 max-w-md text-[15px] leading-relaxed text-slate-body sm:text-base">
+            <p
+              className="mt-2 max-w-md animate-hero-up text-[15px] leading-relaxed text-slate-body sm:text-base"
+              style={{ animationDelay: "380ms" }}
+            >
               Roar! Si singa pemberani yang siap menyemangati harimu, Nala!
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div
+              className="mt-7 flex animate-hero-up flex-col gap-3 sm:flex-row sm:items-center"
+              style={{ animationDelay: "440ms" }}
+            >
               <ButtonLink href="#about" size="lg">
                 Kenalan sama Nala
                 <ArrowRight className="size-4" aria-hidden="true" />
@@ -63,7 +96,10 @@ export function Hero() {
               </ButtonLink>
             </div>
 
-            <p className="mt-5 flex items-center gap-1.5 text-[11px] text-slate-body">
+            <p
+              className="mt-5 flex animate-hero-up items-center gap-1.5 text-[11px] text-slate-body"
+              style={{ animationDelay: "500ms" }}
+            >
               <ShieldCheck className="size-3.5" aria-hidden="true" />
               Fan-made tribute. Foto © JKT48, bukan situs resmi.
             </p>
@@ -71,7 +107,10 @@ export function Hero() {
 
           {/* Portrait composition */}
           <div className="lg:col-span-6">
-            <div className="relative mx-auto w-full max-w-[440px]">
+            <div
+              className="relative mx-auto w-full max-w-[440px] animate-portrait-in"
+              style={{ animationDelay: "200ms" }}
+            >
               <div
                 aria-hidden="true"
                 className="absolute inset-x-4 top-8 bottom-20 overflow-hidden rounded-[2.5rem] shadow-soft sm:inset-x-8"
@@ -146,10 +185,11 @@ export function Hero() {
 
         {/* Quick facts strip */}
         <dl className="relative z-10 grid grid-cols-2 gap-y-4 border-t border-ink/10 py-5 sm:grid-cols-4">
-          {heroStats.map((stat) => (
+          {heroStats.map((stat, index) => (
             <div
               key={stat.label}
-              className="flex items-baseline gap-2 sm:justify-center sm:border-l sm:border-line sm:first:border-l-0"
+              className="flex animate-hero-up items-baseline gap-2 sm:justify-center sm:border-l sm:border-line sm:first:border-l-0"
+              style={{ animationDelay: `${560 + index * 55}ms` }}
             >
               <dt className="order-2 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-body">
                 {stat.label}

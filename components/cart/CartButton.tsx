@@ -24,7 +24,10 @@ export function CartButton({ className }: CartButtonProps) {
       <ShoppingBag className="size-[18px]" aria-hidden="true" />
       <span className="hidden text-[13px] font-semibold sm:inline">Tas</span>
       {itemCount > 0 ? (
-        <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-cobalt px-1 text-[10px] font-bold text-white ring-2 ring-white">
+        <span
+          key={itemCount}
+          className="absolute -right-1 -top-1 grid h-5 min-w-5 animate-count-in place-items-center rounded-full bg-cobalt px-1 text-[10px] font-bold text-white ring-2 ring-white"
+        >
           {itemCount}
         </span>
       ) : null}

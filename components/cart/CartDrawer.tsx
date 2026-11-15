@@ -156,8 +156,9 @@ export function CartDrawer() {
                           <Minus className="size-3" aria-hidden="true" />
                         </button>
                         <span
+                          key={quantity}
                           aria-live="polite"
-                          className="w-5 text-center text-xs font-semibold tabular-nums text-ink"
+                          className="w-5 animate-count-in text-center text-xs font-semibold tabular-nums text-ink"
                         >
                           {quantity}
                         </span>
@@ -208,7 +209,7 @@ export function CartDrawer() {
             {notice ? (
               <p
                 role="status"
-                className="mt-3 flex items-start gap-2 rounded-xl bg-mist p-3 text-[11px] leading-relaxed text-slate-body"
+                className="mt-3 flex animate-rise-in items-start gap-2 rounded-xl bg-mist p-3 text-[11px] leading-relaxed text-slate-body"
               >
                 <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
                 {notice}

@@ -47,6 +47,12 @@
     outline-offset: 3px;
   }
 
+  input,
+  textarea,
+  select {
+    caret-color: var(--color-cobalt);
+  }
+
   section[id] {
     scroll-margin-top: 88px;
   }
@@ -77,6 +83,53 @@
 
   .animate-rise-in {
     animation: rise-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /*
+   * Hero choreography. Everything is transform/opacity only and runs once,
+   * so the opening moment never competes with scrolling or hover states.
+   */
+  .animate-hero-up {
+    animation: hero-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-hero-line {
+    animation: hero-line 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-portrait-in {
+    animation: portrait-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-spotlight-in {
+    animation: spotlight-in 1.8s ease-out both;
+  }
+
+  .animate-menu-in {
+    animation: menu-in 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-pop-in {
+    animation: pop-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-count-in {
+    animation: count-in 0.26s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-lightbox-in {
+    animation: lightbox-in 0.22s ease-out both;
+  }
+
+  /*
+   * Crops a line so it can slide up from below. The padding/negative margin
+   * pair keeps ascenders and the baseline period from being clipped.
+   */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+    padding: 0.06em;
+    margin: -0.06em;
   }
 
   .glass {
@@ -129,6 +182,90 @@
   }
 }
 
+@keyframes hero-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-line {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes portrait-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spotlight-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes count-in {
+  from {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0.35;
+    transform: scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-transparency: reduce) {
   .glass,
   .glass-dark {
@@ -146,8 +283,10 @@
   *,
   *::before,
   *::after {
+    animation-delay: 0ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-delay: 0ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
